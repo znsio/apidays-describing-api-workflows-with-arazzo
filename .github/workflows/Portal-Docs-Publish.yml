@@ -24,7 +24,11 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v4
 
-        - name: Iterate over product folders
+        - name: Generate images from Mermaid syntax
+          shell: bash
+          run: ./scripts/generate-images.sh          
+
+        - name: Iterate over product folders and publish content to the portal
           shell: bash
           run: |
             for product in ./products/*; do

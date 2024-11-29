@@ -23,6 +23,9 @@ This workflow walks through the steps to apply for a BNPL loan at checkout, incl
 **Summary**: This workflow applies for a BNPL loan at checkout using the BNPL platform.  
 **Description**: The process includes verifying product and customer eligibility, initiating the loan transaction, retrieving payment plans, and updating order statuses.  
 
+> **Developer Note:**  
+> This workflow provides a complete sequence of API calls needed for BNPL loan application at checkout. Use it to streamline integration into your e-commerce or financial application.  
+
 ---
 
 ### Inputs
@@ -55,19 +58,25 @@ This workflow walks through the steps to apply for a BNPL loan at checkout, incl
 | `currency`   | `string` | Yes      | Currency code (e.g., USD).|
 | `amount`     | `number` | Yes      | Price in specified currency.|
 
+> **Developer Tip:**  
+> Ensure that the `customer` object conforms to one of the variants listed above. If using an existing customer, provide the `uri` property. For new customers, include their personal details as shown.  
+
 ---
 
 ### Workflow Steps
 
-| Step ID                            | Description                                                                        | Operation ID                                      |
-|------------------------------------|------------------------------------------------------------------------------------|--------------------------------------------------|
-| `checkProductEligibility`          | Checks whether selected products are eligible for BNPL loans.                      | `findEligibleProducts` (BnplEligibilityApi)      |
-| `getCustomerTermsAndConditions`    | Retrieves terms and conditions for BNPL loans.                                     | `getTermsAndConditions` (BnplEligibilityApi)     |
-| `createCustomer`                   | Creates a new customer record for BNPL loan eligibility.                           | `createCustomer` (BnplEligibilityApi)           |
-| `initiateBnplTransaction`          | Initiates a BNPL loan transaction.                                                 | `createBnplTransaction` (BnplLoanApi)           |
-| `authenticateCustomerAndAuthorizeLoan` | Authenticates the customer and obtains authorization for the loan.               | `getAuthorization` (BnplEligibilityApi)         |
-| `retrievePaymentPlan`              | Retrieves the finalized payment plan after loan authorization.                     | `retrieveBnplLoanTransaction` (BnplLoanApi)     |
-| `updateOrderStatus`                | Updates the order status to "Completed" after loan finalization.                   | `updateBnplLoanTransactionStatus` (BnplLoanApi) |
+| Step ID                            | Description                                                                                     | Operation ID                                      | Outputs                                                                                       |
+|------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| `checkProductEligibility`          | Checks whether selected products are eligible for BNPL loans.                                   | `findEligibleProducts` (BnplEligibilityApi)      | `eligibilityCheckRequired`, `eligibleProducts`, `totalLoanAmount`                             |
+| `getCustomerTermsAndConditions`    | Retrieves terms and conditions for BNPL loans.                                                  | `getTermsAndConditions` (BnplEligibilityApi)     | `termsAndConditions`                                                                          |
+| `createCustomer`                   | Creates a new customer record for BNPL loan eligibility.                                        | `createCustomer` (BnplEligibilityApi)           | `customer`                                                                                    |
+| `initiateBnplTransaction`          | Initiates a BNPL loan transaction.                                                              | `createBnplTransaction` (BnplLoanApi)           | `redirectAuthToken`, `loanTransactionId`                                                     |
+| `authenticateCustomerAndAuthorizeLoan` | Authenticates the customer and obtains authorization for the loan.                            | `getAuthorization` (BnplEligibilityApi)         | `redirectUrl`                                                                                 |
+| `retrievePaymentPlan`              | Retrieves the finalized payment plan after loan authorization.                                  | `retrieveBnplLoanTransaction` (BnplLoanApi)     | `finalizedPaymentPlan`                                                                        |
+| `updateOrderStatus`                | Updates the order status to "Completed" after loan finalization.                                | `updateBnplLoanTransactionStatus` (BnplLoanApi) | None                                                                                          |
+
+> **Developer Note:**  
+> Each step is carefully sequenced to ensure a smooth workflow. Refer to the "Outputs" column for values you can use as inputs in subsequent steps.  
 
 ---
 
@@ -76,6 +85,9 @@ This workflow walks through the steps to apply for a BNPL loan at checkout, incl
 | Name                   | Type          | Description                                       |
 |------------------------|---------------|---------------------------------------------------|
 | `finalizedPaymentPlan` | `object`      | Finalized payment plan returned by the workflow. |
+
+> **Developer Insight:**  
+> The `finalizedPaymentPlan` object includes all details of the payment schedule, making it a critical piece for presenting BNPL loan details to your customers.
 
 ---
 
@@ -112,3 +124,4 @@ sequenceDiagram
 
     Client->>+LoanAPI: Update order status
     LoanAPI-->>-Client: Confirmation
+```
