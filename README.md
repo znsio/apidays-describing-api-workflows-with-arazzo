@@ -319,6 +319,7 @@ Here's the arazzo document to process:
 Take the GPT markdown output and save it within `./products/Buy Now Pay Later/Getting-Started-with-BNPL.md`
 
 > Tip: Manually adjust as required, spell check etc.
+> NOTE: Ensure the `mermaid` block is closed (e.g. all the syntax should be within ```mermaid .....```)
 
 ## Step 7. Publish API and guides to a Developer portal (using GitHub action)
 
