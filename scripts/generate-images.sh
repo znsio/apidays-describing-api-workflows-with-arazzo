@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory to scan for markdown files
-PRODUCTS_DIR="./Products"
+PRODUCTS_DIR="./products"
 
 # Function to create valid file names
 sanitize_folder_name() {
