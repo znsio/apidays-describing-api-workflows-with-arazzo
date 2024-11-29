@@ -48,7 +48,7 @@ find "$PRODUCTS_DIR" -type f -name "*.md" | while read -r markdown_file; do
 
             # Replace the Mermaid block with the image reference
             relative_path="./images/embedded/$(basename "$output_file")"
-            echo "![${sanitized_folder_name}-${block_counter}.png]($relative_path)" >> "$temp_file"
+            echo "![${current_file_name}]($relative_path)" >> "$temp_file"
         elif [[ $in_mermaid_block == true ]]; then
             # Inside a Mermaid block, collect content
             mermaid_content+="$line"$'\n'
