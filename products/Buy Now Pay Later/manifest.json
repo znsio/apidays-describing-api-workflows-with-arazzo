@@ -33,14 +33,6 @@
             "type": "apiUrl",
             "slug": "loans",
             "contentUrl": "https://api.swaggerhub.com/apis/smartbear-api-hub/BNPL-Loans/1.0.0/swagger.json"
-        },                 
-        {
-            "order": 3,
-            "parent": "",
-            "name": "Changelog",
-            "slug": "changelog",
-            "type": "markdown",
-            "contentUrl": "Changelog.md"
         }
     ]
 }
