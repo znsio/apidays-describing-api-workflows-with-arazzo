@@ -30,32 +30,4 @@ The workflow consists of the following steps:
 
 The following diagram provides a visual representation of the BNPL Loan Application Workflow:
 
-```mermaid
-sequenceDiagram
-    participant Client
-    participant EligibilityAPI as BnplEligibilityApi
-    participant LoanAPI as BnplLoanApi
-
-    Client->>+EligibilityAPI: Check product eligibility
-    EligibilityAPI-->>-Client: Eligible products and required checks
-
-    alt Eligibility check required
-        Client->>+EligibilityAPI: Retrieve terms and conditions
-        EligibilityAPI-->>-Client: Terms and conditions
-        Client->>+EligibilityAPI: Create customer
-        EligibilityAPI-->>-Client: Customer record or eligibility status
-    end
-
-    Client->>+LoanAPI: Initiate loan transaction
-    LoanAPI-->>-Client: Loan ID and redirect token
-
-    alt Authorization required
-        Client->>+EligibilityAPI: Authenticate customer
-        EligibilityAPI-->>-Client: Redirect URL
-    end
-
-    Client->>+LoanAPI: Retrieve payment plan
-    LoanAPI-->>-Client: Finalized payment plan
-
-    Client->>+LoanAPI: Update order status
-    LoanAPI-->>-Client: Confirmation
+![buy-now-pay-later-1.png](./images/embedded/buy-now-pay-later-1.png)
