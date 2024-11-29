@@ -33,3 +33,10 @@ itarazzo_client_error:
 		-v $$PWD/specs:/itarazzo/specs \
 		-v $$PWD/reports:/itarazzo/target/reports \
 		leidenheit/itarazzo-client
+
+prism-loan-logs:
+	docker logs --tail 10 -f prismL
+
+
+mermaid-to-png:
+	sh scripts/generate-images.sh
