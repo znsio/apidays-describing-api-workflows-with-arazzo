@@ -40,6 +40,7 @@ find "$PRODUCTS_DIR" -type f -name "*.md" | while read -r markdown_file; do
 
             # Generate the output filename
             output_file="$output_dir/${sanitized_folder_name}-${block_counter}.png"
+            current_file_name="${sanitized_folder_name}-${block_counter}.png"
             block_counter=$((block_counter + 1))
 
             # Call the Kroki API to generate the image
@@ -59,7 +60,7 @@ find "$PRODUCTS_DIR" -type f -name "*.md" | while read -r markdown_file; do
 
     # Replace the original markdown file with the modified content
     mv "$temp_file" "$markdown_file"
-    echo "Updated $markdown_file."
+    echo "Updated $markdown_file. and replaced mermaid blocks with images."
 done
 
-echo "Processing complete."
+echo "Processing mermaid syntax to PNG images complete."
