@@ -1,8 +1,13 @@
 # Describing API Workflows with Arazzo (APIDays Paris 2024)
 
-Let's create a 'Buy Now Pay Later' product for our developer portal which includes use case orientated workflows that clearly explain to consumers what steps they need to do to integrate the capabilities into their client applications.
+This repo contains examples of using Arazzo in the wild. It focuses on working in a scenario where from existing APIs we want to craft and publish use case orientated workflows to a developer portal. These workflows clearly explain the capabilities and steps to integrate such capabilities (spanning multiple APIs) into a client application.
 
 This sample repo showcases how to use the Arazzo Specification GPT, Spectral, VSCode, and Itarazzo to generate stellar API guides published to a SwaggerHub Portal instance. This is focused on showcasing emerging tooling to get started with the new [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html) from the [OpenAPI Initiative](https://www.openapis.org/).
+
+**You can choose your own adventure:**
+
+- 💵 `Buy Now Pay Later` workflow - **this branch**
+- 🐶 `Adopt a Pet` workflow - [pet adoptions](https://github.com/frankkilcommins/apidays-describing-api-workflows-with-arazzo/tree/pet-adoptions) branch
 
 ## Tools
 
