@@ -1,0 +1,25 @@
+{
+  "customer": {
+    "uri": "https://api.example.com/customers/12345",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1990-01-01",
+    "postalCode": "12345"
+  },
+  "products": [
+    {
+      "productCode": "PROD001",
+      "purchaseAmount": {
+        "currency": "USD",
+        "amount": 299.99
+      }
+    },
+    {
+      "productCode": "PROD002",
+      "purchaseAmount": {
+        "currency": "USD",
+        "amount": 159.49
+      }
+    }
+  ]
+}

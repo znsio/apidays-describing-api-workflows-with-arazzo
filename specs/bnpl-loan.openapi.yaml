@@ -39,13 +39,9 @@ paths:
                 - totalAmount
               properties:
                 enrolledCustomer:
-                  description: The customer resource URI for a previously enrolled customer
-                  allOf:
-                    - $ref: '#/components/schemas/CustomerUri'
+                  $ref: '#/components/schemas/CustomerUri'
                 newCustomer:
-                  description: A newly-created customer resource URI for this loan
-                  allOf:
-                    - $ref: '#/components/schemas/CustomerUri'
+                  $ref: '#/components/schemas/CustomerUri'
                 products:
                   description: Product codes for products included in loan. Supplied to ensure any special terms are included in loan agreement
                   type: array
@@ -53,9 +49,7 @@ paths:
                   items:
                     $ref: '#/components/schemas/ProductCode'
                 totalAmount:
-                  description: Loan amount being requested
-                  allOf:
-                    - $ref: '#/components/schemas/CurrencyAndAmount'                
+                  $ref: '#/components/schemas/CurrencyAndAmount'
       responses:
         "202":
           description: New loan initiated. This may require authorization before it is finalized

@@ -74,19 +74,6 @@ paths:
                      termsAndConditionsAccepted:
                       type: boolean
       responses:
-        "200":
-          description: Customer is not eligible for BNPL loan
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                  - reasonCode
-                properties:
-                  reasonCode:
-                    type: string
-                    example: Class A credit rating
-                additionalProperties: false
         "201":
           description: Customer resource has been created and can be linked to loan transaction
           content:
@@ -106,10 +93,21 @@ paths:
                       - self
                     properties:
                       self:
-                        description: URL identifying this resource
-                        allOf:
-                          - $ref: '#/components/schemas/CustomerUri'
+                        $ref: '#/components/schemas/CustomerUri'
                     additionalProperties: false
+                additionalProperties: false
+        "200":
+          description: Customer is not eligible for BNPL loan
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - reasonCode
+                properties:
+                  reasonCode:
+                    type: string
+                    example: Class A credit rating
                 additionalProperties: false
         "400":
           description: Bad Request
@@ -171,9 +169,7 @@ paths:
                 - products
               properties:
                 customer:
-                  description: If the customer is already enrolled on the BNPL platform the customer URI can be supplied, which can be used to perform an upfront eligibility check
-                  allOf:
-                    - $ref: '#/components/schemas/CustomerUri'
+                  $ref: '#/components/schemas/CustomerUri'
                 products:
                   $ref: '#/components/schemas/Products'
               additionalProperties: false

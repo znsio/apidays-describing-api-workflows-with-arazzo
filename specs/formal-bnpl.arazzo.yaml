@@ -8,10 +8,10 @@ info:
     and retrieving the finalized payment plan. It concludes by updating the order status once the transaction is complete.
 sourceDescriptions:
   - name: BnplEligibilityApi
-    url: /itarazzo/specs/bnpl-eligibility.openapi.yaml
+    url: ./specs/bnpl-eligibility.openapi.yaml
     type: openapi
   - name: BnplLoanApi
-    url: /itarazzo/specs/bnpl-loan.openapi.yaml
+    url: ./specs/bnpl-loan.openapi.yaml
     type: openapi
 workflows:
   - workflowId: ApplyForLoanAtCheckout
@@ -115,6 +115,7 @@ workflows:
               - condition: $response.body.productCodes != null
           - name: productsNotEligible
             type: end
+            stepId: none
             criteria:
               - condition: $response.body.productCodes == null
       - stepId: getCustomerTermsAndConditions
@@ -161,6 +162,7 @@ workflows:
               - condition: $statusCode == 201
           - name: customerNotEligible
             type: end
+            stepId: none
             criteria:
               - condition: $statusCode == 200
       - stepId: initiateBnplTransaction

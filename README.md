@@ -140,7 +140,7 @@ make provider_mock_loans_prism
 Alternatively, run the explicit docker / prism command:
 
 ```shell
-docker run --add-host=host.docker.internal:host-gateway -d --init --rm --name prismL -v ${PWD}/specs:/specs -p 8084:4010 stoplight/prism:latest mock -h 0.0.0.0 "specs/bnpl-loan.openapi.yaml"
+docker run --add-host=host.docker.internal:host-gateway -d --init --rm --name prismL -v ${PWD}/specs:/specs -p 8084:4010 stoplight/prism:latest mock -h 0.0.0.0 "/specs/bnpl-loan.openapi.yaml"
 ```
 
 #### Verify the mock is available
@@ -162,7 +162,7 @@ make provider_mock_eligibility_prism
 Alternatively, run the explicit docker / prism command:
 
 ```shell
-docker run --add-host=host.docker.internal:host-gateway -d --init --rm --name prismE -v ${PWD}/specs:/specs -p 8085:4010 stoplight/prism:latest mock -h 0.0.0.0 "specs/bnpl-loan.openapi.yaml"
+docker run --add-host=host.docker.internal:host-gateway -d --init --rm --name prismE -v ${PWD}/specs:/specs -p 8085:4010 stoplight/prism:latest mock -h 0.0.0.0 "/specs/bnpl-eligibility.openapi.yaml"
 ```
 
 #### Verify the Eligibility API mock is available
@@ -219,8 +219,8 @@ docker run -t --rm \
     --add-host=host.docker.internal:host-gateway \
     -e ARAZZO_FILE=/itarazzo/specs/formal-bnpl.arazzo.yaml \
     -e ARAZZO_INPUTS_FILE=/itarazzo/specs/formal-bnpl-arazzo-inputs.json \
-    -v $$PWD/specs:/itarazzo/specs \
-    -v $$PWD/reports:/itarazzo/target/reports \
+    -v $PWD/specs:/itarazzo/specs \
+    -v $PWD/reports:/itarazzo/target/reports \
     leidenheit/itarazzo-client
 ```
 
@@ -250,8 +250,8 @@ docker run -t --rm \
     --add-host=host.docker.internal:host-gateway \
     -e ARAZZO_FILE=/itarazzo/specs/error-bnpl.arazzo.yaml \
     -e ARAZZO_INPUTS_FILE=/itarazzo/specs/formal-bnpl-arazzo-inputs.json \
-    -v $$PWD/specs:/itarazzo/specs \
-    -v $$PWD/reports:/itarazzo/target/reports \
+    -v $PWD/specs:/itarazzo/specs \
+    -v $PWD/reports:/itarazzo/target/reports \
     leidenheit/itarazzo-client
 ```
 

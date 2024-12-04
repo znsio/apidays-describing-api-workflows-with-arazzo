@@ -20,8 +20,8 @@ itarazzo_client:
 		--add-host=host.docker.internal:host-gateway \
 		-e ARAZZO_FILE=/itarazzo/specs/formal-bnpl.arazzo.yaml \
 		-e ARAZZO_INPUTS_FILE=/itarazzo/specs/formal-bnpl-arazzo-inputs.json \
-		-v $$PWD/specs:/itarazzo/specs \
-		-v $$PWD/reports:/itarazzo/target/reports \
+		-v $PWD/specs:/itarazzo/specs \
+		-v $PWD/reports:/itarazzo/target/reports \
 		leidenheit/itarazzo-client
 
 itarazzo_client_error:
@@ -30,8 +30,8 @@ itarazzo_client_error:
 		--add-host=host.docker.internal:host-gateway \
 		-e ARAZZO_FILE=/itarazzo/specs/error-bnpl.arazzo.yaml \
 		-e ARAZZO_INPUTS_FILE=/itarazzo/specs/formal-bnpl-arazzo-inputs.json \
-		-v $$PWD/specs:/itarazzo/specs \
-		-v $$PWD/reports:/itarazzo/target/reports \
+		-v $PWD/specs:/itarazzo/specs \
+		-v $PWD/reports:/itarazzo/target/reports \
 		leidenheit/itarazzo-client
 
 prism-loan-logs:
