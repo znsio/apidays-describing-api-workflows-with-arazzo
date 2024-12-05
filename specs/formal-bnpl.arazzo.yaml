@@ -28,7 +28,7 @@ workflows:
       properties:
         customer:
           description: Customer details or link to an existing customer record.
-          oneOf:
+          allOf:
           - type: object
             required:
             - firstName
