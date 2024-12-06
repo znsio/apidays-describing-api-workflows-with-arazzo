@@ -1,0 +1,7 @@
+sources:
+  - provider: filesystem
+    provides:
+      - ./specs/formal-bnpl.arazzo.yaml
+    consumes:
+      - ./specs/bnpl-eligibility.openapi.yaml
+      - ./specs/bnpl-loan.openapi.yaml

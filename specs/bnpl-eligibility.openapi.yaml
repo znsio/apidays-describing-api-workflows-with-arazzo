@@ -38,7 +38,7 @@ paths:
           schema:
             $ref: '#/components/schemas/AuthorizationToken'
       responses:
-        "200":
+        "302":
           description: Instruction to redirect End User, based on validation of the authorisation token
           headers:
             Location:
