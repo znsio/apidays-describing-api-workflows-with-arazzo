@@ -1,0 +1,22 @@
+{
+    "http-request": {
+        "path": "/terms-and-conditions",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a list of entities at the /terms-and-conditions endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            "The loan amount is the total money borrowed by the borrower.",
+            "Interest is charged annually at the specified rate on the loan amount, usually 1.5%",
+            "The repayment term defines the duration over which the loan must be fully repaid, usually 3 months",
+            "A late payment penalty applies if installments are not paid on time.",
+            "Collateral may be required to secure the loan."
+        ],
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

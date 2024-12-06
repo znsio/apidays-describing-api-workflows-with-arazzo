@@ -1,0 +1,18 @@
+{
+    "http-request": {
+        "path": "/loan-transactions/ABC123-DEF456/status",
+        "method": "PATCH",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "status": "Completed"
+        },
+        "description": "This is an example of a request to partially update an existing entity at the /loan-transactions/FJIYL/status endpoint "
+    },
+    "http-response": {
+        "status": 204,
+        "status-text": "No Content",
+        "description": "This is an example of a response  after it has been modified using PATCH"
+    }
+}

@@ -443,9 +443,7 @@ components:
           type: string
           format: uri
         products:
-          description: List of products and purchase amounts included in BNPL loan transaction
-          allOf:
-            - $ref: '#/components/schemas/Products'
+          $ref: '#/components/schemas/Products'
         status:
           $ref: '#/components/schemas/LoanTransactionStatuses'
         totalAmount:

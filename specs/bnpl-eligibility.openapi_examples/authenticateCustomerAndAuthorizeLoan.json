@@ -1,0 +1,18 @@
+{
+    "http-request": {
+        "path": "/auth",
+        "method": "GET",
+        "query": {
+            "authorizationToken": "123e4567-e89b-12d3-a456-426614174000"
+        },
+        "description": "This is an example of a request to retrieve a list of entities at the /auth endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "status-text": "OK",
+        "headers": {
+            "Location": "https://api.example.com/customers/ABC123"
+        },
+        "description": "This is an example of a response "
+    }
+}

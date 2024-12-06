@@ -1,0 +1,35 @@
+{
+    "http-request": {
+        "path": "/loan-transactions",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "enrolledCustomer": "https://api.example.com/customers/ABC123",
+            "products": [
+                "PROD001",
+                "PROD002"
+            ],
+            "totalAmount": {
+                "currency": "USD",
+                "amount": 459.48
+            }
+        },
+        "description": "This is an example of a request to create a new entity at the /loan-transactions endpoint "
+    },
+    "http-response": {
+        "status": 202,
+        "body": {
+            "loanTransactionId": "ABC123-DEF456",
+            "links": {
+                "self": "https://api.example.com/loan-transactions/ABC123-DEF456"
+            }
+        },
+        "status-text": "Accepted",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /loan-transactions endpoint "
+    }
+}

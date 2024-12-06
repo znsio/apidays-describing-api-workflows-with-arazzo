@@ -5,3 +5,5 @@ sources:
     consumes:
       - ./specs/bnpl-eligibility.openapi.yaml
       - ./specs/bnpl-loan.openapi.yaml
+
+ignoreInlineExamples: true

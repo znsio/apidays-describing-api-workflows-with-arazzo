@@ -1,0 +1,49 @@
+{
+    "http-request": {
+        "path": "/products",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "customer": "https://api.example.com/customers/12345",
+            "products": [
+                {
+                    "productCode": "PROD001",
+                    "purchaseAmount": {
+                        "currency": "USD",
+                        "amount": 299.99
+                    }
+                },
+                {
+                    "productCode": "PROD002",
+                    "purchaseAmount": {
+                        "currency": "USD",
+                        "amount": 159.49
+                    }
+                }
+            ]
+        },
+        "description": "This is an example of a request to create a new entity at the /products endpoint "
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "existingCustomerNotEligible": false,
+            "productCodes": [
+                "PROD001",
+                "PROD002"
+            ],
+            "eligibilityCheckRequired": true,
+            "totalAmount": {
+                "currency": "USD",
+                "amount": 459.48
+            }
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /products endpoint "
+    }
+}

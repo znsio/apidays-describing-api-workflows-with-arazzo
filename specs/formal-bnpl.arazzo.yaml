@@ -53,6 +53,10 @@ workflows:
                 description: URI for an existing customer.
                 type: string
                 format: uri
+              authorizationToken:
+                description: Authorization token for the customer loan.
+                type: string
+                format: uuid
         products:
           type: array
           minItems: 1
@@ -83,23 +87,23 @@ workflows:
           contentType: application/json
           payload: |
             {
-                "customer": "{$inputs.customer.uri}",
-                "products": [
-                    {
-                        "productCode": "PROD001",
-                        "purchaseAmount": {
-                            "currency": "USD",
-                            "amount": 299.99
-                        }
-                    },
-                    {
-                        "productCode": "PROD002",
-                        "purchaseAmount": {
-                            "currency": "USD",
-                            "amount": 159.49
-                        }
-                    }
-                ]
+              "customer": "{$inputs.customer.uri}",
+              "products": [
+                {
+                  "productCode": "PROD001",
+                  "purchaseAmount": {
+                    "currency": "USD",
+                    "amount": 299.99
+                  }
+                },
+                {
+                  "productCode": "PROD002",
+                  "purchaseAmount": {
+                    "currency": "USD",
+                    "amount": 159.49
+                  }
+                }
+              ]
             }
         successCriteria:
           - condition: $statusCode == 200
@@ -172,19 +176,13 @@ workflows:
           contentType: application/json
           payload: |
             {
-                "enrolledCustomer": "https://api.example.com/customers/12345",
-                "products": [
-                    "1AX73431"
-                ],
-                "totalAmount": {
-                    "currency": "EUR",
-                    "amount": 500
-                }
+              "enrolledCustomer": "{$steps.createCustomer.outputs.customer}",
+              "products": "{$steps.checkProductEligibility.outputs.eligibleProducts}",
+              "totalAmount": "{$steps.checkProductEligibility.outputs.totalLoanAmount}"
             }
         successCriteria:
           - condition: $statusCode == 202
         outputs:
-          redirectAuthToken: $response.body.redirectAuthToken
           loanTransactionId: $response.body.loanTransactionId
         onSuccess:
           - name: authorizationRequired
@@ -203,7 +201,7 @@ workflows:
         parameters:
           - name: authorizationToken
             in: query
-            value: 123e4567-e89b-12d3-a456-426614174000
+            value: $inputs.customer.authorizationToken
         successCriteria:
           - condition: $statusCode == 200
         outputs:

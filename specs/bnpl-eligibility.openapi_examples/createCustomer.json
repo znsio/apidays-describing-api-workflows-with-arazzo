@@ -1,0 +1,31 @@
+{
+    "http-request": {
+        "path": "/customers",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "firstName": "John",
+            "lastName": "Doe",
+            "dateOfBirth": "1990-01-01",
+            "postalCode": "12345",
+            "termsAndConditionsAccepted": true
+        },
+        "description": "This is an example of a request to create a new entity at the /customers endpoint "
+    },
+    "http-response": {
+        "status": 201,
+        "body": {
+            "customerId": "ABC123",
+            "links": {
+                "self": "https://api.example.com/customers/ABC123"
+            }
+        },
+        "status-text": "Created",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /customers endpoint "
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "http-request": {
+        "path": "/loan-transactions/ABC123-DEF456",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /loan-transactions/JTTXJ endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "customer": "https://api.example.com/customers/ABC123",
+            "products": [
+                {
+                    "productCode": "PROD001",
+                    "purchaseAmount": {
+                        "currency": "USD",
+                        "amount": 299.99
+                    }
+                },
+                {
+                    "productCode": "PROD002",
+                    "purchaseAmount": {
+                        "currency": "USD",
+                        "amount": 159.49
+                    }
+                }
+            ],
+            "status": "Pending",
+            "totalAmount": {
+                "currency": "USD",
+                "amount": 459.48
+            },
+            "paymentSchedule": [
+                {
+                    "paymentDate": "2024-12-06",
+                    "amount": {
+                        "currency": "USD",
+                        "amount": 153.16
+                    },
+                    "lastPayment": false
+                }, 
+                {
+                    "paymentDate": "2025-01-06",
+                    "amount": {
+                        "currency": "USD",
+                        "amount": 153.16
+                    },
+                    "lastPayment": false
+                },
+                {
+                    "paymentDate": "2024-02-06",
+                    "amount": {
+                        "currency": "USD",
+                        "amount": 160.00
+                    },
+                    "lastPayment": true
+                }
+            ]
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}
