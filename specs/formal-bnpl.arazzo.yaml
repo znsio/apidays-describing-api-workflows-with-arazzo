@@ -119,7 +119,6 @@ workflows:
               - condition: $response.body.productCodes != null
           - name: productsNotEligible
             type: end
-            stepId: none
             criteria:
               - condition: $response.body.productCodes == null
       - stepId: getCustomerTermsAndConditions
@@ -166,7 +165,6 @@ workflows:
               - condition: $statusCode == 201
           - name: customerNotEligible
             type: end
-            stepId: none
             criteria:
               - condition: $statusCode == 200
       - stepId: initiateBnplTransaction
