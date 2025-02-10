@@ -7,7 +7,7 @@ This sample repo showcases how to use the Arazzo Specification with Specmatic to
 ## Getting Started
 ### This Repo
 ```shell
-git clone https://github.com/znsio/apidays-describing-api-workflows-with-arazzo.git
+git clone git@github.com/znsio/apidays-describing-api-workflows-with-arazzo.git
 ```
 
 ### Dependency
