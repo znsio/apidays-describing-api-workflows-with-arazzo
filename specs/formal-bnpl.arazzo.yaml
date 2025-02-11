@@ -116,11 +116,11 @@ workflows:
             type: goto
             stepId: getCustomerTermsAndConditions
             criteria:
-              - condition: $response.body.productCodes != null
+              - condition: $response.body.?productCodes != null
           - name: productsNotEligible
             type: end
             criteria:
-              - condition: $response.body.productCodes == null
+              - condition: $response.body.?productCodes == null
       - stepId: getCustomerTermsAndConditions
         description: Retrieve terms and conditions for BNPL loans.
         operationId: $sourceDescriptions.BnplEligibilityApi.getTermsAndConditions
@@ -187,12 +187,12 @@ workflows:
             type: goto
             stepId: authenticateCustomerAndAuthorizeLoan
             criteria:
-              - condition: $response.body.redirectAuthToken != null
+              - condition: $response.body.?redirectAuthToken != null
           - name: authorizationNotRequired
             type: goto
             stepId: retrievePaymentPlan
             criteria:
-              - condition: $response.body.redirectAuthToken == null
+              - condition: $response.body.?redirectAuthToken == null
       - stepId: authenticateCustomerAndAuthorizeLoan
         description: Authenticate the customer and obtain authorization for the loan.
         operationId: $sourceDescriptions.BnplEligibilityApi.getAuthorization
